@@ -10,8 +10,15 @@ namespace TicTacToeLib.Libs
     {
         public char WinPlayer { get; set; }
         public bool IsWin { get; private set; }
+        public bool PlayerOne { get;  set; }
 
         public char[] Board = new char[9];
+
+        public Model()
+        {
+            this.WinPlayer = WinPlayer;
+            this.IsWin = IsWin;
+        }
 
         public void CheckWinner()
         {
