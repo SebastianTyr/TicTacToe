@@ -15,11 +15,16 @@ namespace TicTacToeConsoleApp
         {
             Console.WriteLine("Wiatj w klasycznym kółko i krzyżyk, najwspanialszej grze na świecie - miłej zabawy :)");
             Console.WriteLine();
-            Console.WriteLine($"{m.Board[0]} | {m.Board[1]} | {m.Board[2]}");
-            Console.WriteLine("---------");
-            Console.WriteLine($"{m.Board[3]} | {m.Board[4]} | {m.Board[5]}");
-            Console.WriteLine("---------");
-            Console.WriteLine($"{m.Board[6]} | {m.Board[7]} | {m.Board[8]}");
+
+            Console.WriteLine($"Gracz 1 | 0 : 0 | Gracz 2");
+            Console.WriteLine();
+
+            Console.WriteLine($"        {m.Board[0]} | {m.Board[1]} | {m.Board[2]}");
+            Console.WriteLine("       -----------");
+            Console.WriteLine($"        {m.Board[3]} | {m.Board[4]} | {m.Board[5]}");
+            Console.WriteLine("       -----------");
+            Console.WriteLine($"        {m.Board[6]} | {m.Board[7]} | {m.Board[8]}");
+
             Console.WriteLine();
         }
 
@@ -61,7 +66,7 @@ namespace TicTacToeConsoleApp
                 }
                 else
                 {
-                    figureMove = 'Y';
+                    figureMove = 'O';
                 }
                 Console.Clear();
                 GetBoard();
@@ -70,7 +75,7 @@ namespace TicTacToeConsoleApp
 
                 tmp = int.Parse(Console.ReadLine());
 
-                switch(tmp)
+                switch (tmp)
                 {
                     case 1:
                         m.Board[0] = figureMove;
