@@ -16,7 +16,7 @@ namespace TicTacToeConsoleApp
             Console.WriteLine("Wiatj w klasycznym kółko i krzyżyk, najwspanialszej grze na świecie - miłej zabawy :)");
             Console.WriteLine();
 
-            Console.WriteLine($"Gracz 1 | 0 : 0 | Gracz 2");
+            Console.WriteLine($"Gracz 1 | {m.ScoreX} : {m.ScoreO} | Gracz 2");
             Console.WriteLine();
 
             Console.WriteLine($"        {m.Board[0]} | {m.Board[1]} | {m.Board[2]}");
@@ -32,13 +32,22 @@ namespace TicTacToeConsoleApp
         {
             Console.WriteLine();
             Console.WriteLine("Remis!");
-            Console.WriteLine();
-            Environment.Exit(1);
+            NewGame();
+        }
+
+        private void NewGame()
+        {
+            Console.WriteLine($"Czy chcesz zagrać jeszcze raz? (y/n)");
+            string _tmp = Console.ReadLine();
+            if (_tmp == "y" || _tmp == "Y") { Run(); m.GetScore(); }
+            else
+                Environment.Exit(1);
         }
 
         public void Run()
         {
             GetBoard();
+            m.GetScore();
 
             int move = 0;
             char figureMove = ' ';
@@ -71,7 +80,7 @@ namespace TicTacToeConsoleApp
                 Console.Clear();
                 GetBoard();
                 Console.WriteLine();
-                Console.WriteLine($"Podaj numer komórki {figureMove} (1-9)");
+                Console.WriteLine($"Podaj pozycję {figureMove} (1-9)");
 
                 tmp = int.Parse(Console.ReadLine());
 
@@ -114,7 +123,6 @@ namespace TicTacToeConsoleApp
                         move++;
                         break;
                     default:
-                        Console.WriteLine("Nie psuj mnie i spóbuj ponownie :(");
                         break;
                 }
                 m.PlayerOne = !m.PlayerOne;
@@ -123,7 +131,9 @@ namespace TicTacToeConsoleApp
 
             Console.Clear();
             GetBoard();
+            NewGame();
             Console.WriteLine($"Wygrał: {m.WinPlayer}!");
+
         }
     }
 }
