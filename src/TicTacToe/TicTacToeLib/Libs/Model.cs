@@ -15,7 +15,6 @@ namespace TicTacToeLib.Libs
         public int ScoreO { get; set; }
 
         public char[] Board = new char[9];
-        public char[] Winner = new char[2];
 
         public Model()
         {

@@ -131,8 +131,8 @@ namespace TicTacToeConsoleApp
 
             Console.Clear();
             GetBoard();
-            NewGame();
             Console.WriteLine($"Wygrał: {m.WinPlayer}!");
+            NewGame();
 
         }
     }
