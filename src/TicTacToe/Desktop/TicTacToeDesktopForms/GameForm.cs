@@ -23,10 +23,19 @@ namespace TicTacToeDesktopForms
 
         private void NewGame()
         {
-
+            foreach(Control c in Controls)
+            {
+                try
+                {
+                    Button button = (Button)c;
+                    button.Enabled = true;
+                    button.Text = "";
+                }
+                catch { }
+            }
         }
 
-        private void Draw()
+        private void DrawForm()
         {
             DialogResult dialog = MessageBox.Show("Remis! Czy chcesz zagrać jeszcze raz?", "Koniec Gry", MessageBoxButtons.YesNo);
 
@@ -36,7 +45,7 @@ namespace TicTacToeDesktopForms
             }
             else if(dialog == DialogResult.No)
             {
-                Environment.Exit(1);
+                Dispose();
             }
         }
 
@@ -53,6 +62,16 @@ namespace TicTacToeDesktopForms
         private void JakGraćToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new HowToPlayForm().Show();
+        }
+
+        private void WyjścieToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Dispose();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            button1.Enabled = false;
         }
     }
 }

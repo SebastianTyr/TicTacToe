@@ -44,7 +44,7 @@ namespace TicTacToeConsoleApp
                 Environment.Exit(1);
         }
 
-        public void Run()
+        protected void Run()
         {
             GetBoard();
             m.GetScore();

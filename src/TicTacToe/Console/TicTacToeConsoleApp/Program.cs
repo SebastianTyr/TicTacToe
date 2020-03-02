@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace TicTacToeConsoleApp
 {
-    class Program
+    class Program : Game
     {
         static void Main(string[] args)
         {
-            new Game().Run();
+            new Program().Run();
         }
     }
 }
