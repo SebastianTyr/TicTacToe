@@ -17,6 +17,7 @@ namespace TicTacToeDesktopForms
         int startedPlayer;
         int currentPlayer;
         int[,] values = new int[3, 3];
+
         public GameForm()
         {
             InitializeComponent();
