@@ -265,7 +265,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(463, 39);
             this.label1.TabIndex = 23;
-            this.label1.Text = "Witaj! Zagrajmy w Kółko i Krzyżyk\"";
+            this.label1.Text = "Witaj! Zagrajmy w Kółko i Krzyżyk";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // GameForm

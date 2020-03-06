@@ -7,13 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.VisualBasic;
 using TicTacToeLib.Libs;
 
 namespace TicTacToeDesktopForms
 {
     public partial class GameForm : Form
     {
-        Model m = new Model();
+        Prompt prompt = new Prompt();
         int startedPlayer;
         int currentPlayer;
         int[,] values = new int[3, 3];
@@ -25,7 +26,7 @@ namespace TicTacToeDesktopForms
 
         private void NewGame()
         {
-            foreach(Control c in Controls)
+            foreach (Control c in Controls)
             {
                 try
                 {
@@ -77,7 +78,7 @@ namespace TicTacToeDesktopForms
                     if (playerOneCounter == 3)
                     {
                         PlayerOneScoreLabel.Text = Convert.ToString(Convert.ToInt32(PlayerOneScoreLabel.Text) + 1);
-                        DialogResult winDialog = MessageBox.Show("Wygrał Gracz 1! Czy chcesz zagrać jeszcze raz?", "Koniec Gry", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                        DialogResult winDialog = MessageBox.Show("Wygrał Gracz 1! Czy chcesz zagrać jeszcze raz?", "Koniec Gry", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
                         if(winDialog == DialogResult.Yes)
                         {
                             NewGame();
@@ -91,7 +92,7 @@ namespace TicTacToeDesktopForms
                     if (playerTwoCounter == 3)
                     {
                         PlayerTwoScoreLabel.Text = Convert.ToString(Convert.ToInt32(PlayerTwoScoreLabel.Text) + 1);
-                        DialogResult winDialog = MessageBox.Show("Wygrał Gracz 2! Czy chcesz zagrać jeszcze raz?", "Koniec Gry", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                        DialogResult winDialog = MessageBox.Show("Wygrał Gracz 2! Czy chcesz zagrać jeszcze raz?", "Koniec Gry", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
                         if (winDialog == DialogResult.Yes)
                         {
                             NewGame();
@@ -107,12 +108,105 @@ namespace TicTacToeDesktopForms
 
         private void RowsCheck()
         {
+            int playerOneCounter = 0;
+            int playerTwoCounter = 0;
 
+            for (int i = 0; i < 3; i++)
+            {
+                playerOneCounter = 0;
+                playerTwoCounter = 0;
+                for (int j = 0; j < 3; j++)
+                {
+                    if (values[i, j] == 1)
+                    {
+                        playerOneCounter++;
+                    }
+                    if (values[i, j] == 2)
+                    {
+                        playerTwoCounter++;
+                    }
+
+                    if (playerOneCounter == 3)
+                    {
+                        PlayerOneScoreLabel.Text = Convert.ToString(Convert.ToInt32(PlayerOneScoreLabel.Text) + 1);
+                        DialogResult winDialog = MessageBox.Show("Wygrał Gracz 1! Czy chcesz zagrać jeszcze raz?", "Koniec Gry", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
+                        if (winDialog == DialogResult.Yes)
+                        {
+                            NewGame();
+                        }
+                        else if (winDialog == DialogResult.No)
+                        {
+                            Dispose();
+                        }
+                    }
+
+                    if (playerTwoCounter == 3)
+                    {
+                        PlayerTwoScoreLabel.Text = Convert.ToString(Convert.ToInt32(PlayerTwoScoreLabel.Text) + 1);
+                        DialogResult winDialog = MessageBox.Show("Wygrał Gracz 2! Czy chcesz zagrać jeszcze raz?", "Koniec Gry", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
+                        if (winDialog == DialogResult.Yes)
+                        {
+                            NewGame();
+                        }
+                        else if (winDialog == DialogResult.No)
+                        {
+                            Dispose();
+                        }
+                    }
+                }
+            }
         }
 
-         private void ColumnsCheck()
+        
+        private void ColumnsCheck()
         {
+            int playerOneCounter = 0;
+            int playerTwoCounter = 0;
 
+            for (int i = 0; i < 3; i++)
+            {
+                playerOneCounter = 0;
+                playerTwoCounter = 0;
+                for (int j = 0; j < 3; j++)
+                {
+                    if (values[j, i] == 1)
+                    {
+                        playerOneCounter++;
+                    }
+                    if (values[j, i] == 2)
+                    {
+                        playerTwoCounter++;
+                    }
+
+                    if (playerOneCounter == 3)
+                    {
+                        PlayerOneScoreLabel.Text = Convert.ToString(Convert.ToInt32(PlayerOneScoreLabel.Text) + 1);
+                        DialogResult winDialog = MessageBox.Show("Wygrał Gracz 1! Czy chcesz zagrać jeszcze raz?", "Koniec Gry", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
+                        if (winDialog == DialogResult.Yes)
+                        {
+                            NewGame();
+                        }
+                        else if (winDialog == DialogResult.No)
+                        {
+                            Dispose();
+                        }
+                    }
+
+                    if (playerTwoCounter == 3)
+                    {
+                        PlayerTwoScoreLabel.Text = Convert.ToString(Convert.ToInt32(PlayerTwoScoreLabel.Text) + 1);
+                        DialogResult winDialog = MessageBox.Show("Wygrał Gracz 2! Czy chcesz zagrać jeszcze raz?", "Koniec Gry", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
+                        if (winDialog == DialogResult.Yes)
+                        {
+                            NewGame();
+                        }
+                        else if (winDialog == DialogResult.No)
+                        {
+                            Dispose();
+                        }
+                    }
+                }
+            }
         }
 
         private void DrawForm()
@@ -132,11 +226,15 @@ namespace TicTacToeDesktopForms
         private void GameFormLoad(object sender, EventArgs e)
         {
             currentPlayer = 1;
+            PlayerOneLabel.Text = prompt.ShowDialog("Nazwa użytkownika", "Podaj nazwe gracza 1");
+            PlayerTwoLabel.Text = prompt.ShowDialog("Nazwa użytkownika", "Podaj nazwe gracza 2");
         }
 
         private void NowaGraToolStripMenuItem_Click(object sender, EventArgs e)
         {
             NewGame();
+            PlayerOneScoreLabel.Text = "0";
+            PlayerTwoScoreLabel.Text = "0";
         }
 
         private void OGrzeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -159,15 +257,19 @@ namespace TicTacToeDesktopForms
             button1.Enabled = false;
             if(currentPlayer == 1)
             {
+                values[0, 0] = 1;
                 button1.Text = "X";
                 currentPlayer = 2;
             }
             else if(currentPlayer == 2)
             {
+                values[0, 0] = 2;
                 button1.Text = "O";
                 currentPlayer = 1;
             }
-            DiagonalsCheck();
+            DiagonalsCheck(); 
+            RowsCheck(); 
+            ColumnsCheck();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -175,15 +277,19 @@ namespace TicTacToeDesktopForms
             button2.Enabled = false;
             if (currentPlayer == 1)
             {
+                values[0, 1] = 1;
                 button2.Text = "X";
                 currentPlayer = 2;
             }
             else if (currentPlayer == 2)
             {
+                values[0, 1] = 2;
                 button2.Text = "O";
                 currentPlayer = 1;
             }
             DiagonalsCheck();
+            RowsCheck();
+            ColumnsCheck();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -191,15 +297,19 @@ namespace TicTacToeDesktopForms
             button3.Enabled = false;
             if (currentPlayer == 1)
             {
+                values[0, 2] = 1;
                 button3.Text = "X";
                 currentPlayer = 2;
             }
             else if (currentPlayer == 2)
             {
+                values[0, 2] = 2;
                 button3.Text = "O";
                 currentPlayer = 1;
             }
             DiagonalsCheck();
+            RowsCheck();
+            ColumnsCheck();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -207,15 +317,19 @@ namespace TicTacToeDesktopForms
             button4.Enabled = false;
             if (currentPlayer == 1)
             {
+                values[1, 0] = 1;
                 button4.Text = "X";
                 currentPlayer = 2;
             }
             else if (currentPlayer == 2)
             {
+                values[1, 0] = 2;
                 button4.Text = "O";
                 currentPlayer = 1;
             }
             DiagonalsCheck();
+            RowsCheck();
+            ColumnsCheck();
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -223,15 +337,19 @@ namespace TicTacToeDesktopForms
             button5.Enabled = false;
             if (currentPlayer == 1)
             {
+                values[1, 1] = 1;
                 button5.Text = "X";
                 currentPlayer = 2;
             }
             else if (currentPlayer == 2)
             {
+                values[1, 1] = 2;
                 button5.Text = "O";
                 currentPlayer = 1;
             }
             DiagonalsCheck();
+            RowsCheck();
+            ColumnsCheck();
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -239,15 +357,19 @@ namespace TicTacToeDesktopForms
             button6.Enabled = false;
             if (currentPlayer == 1)
             {
+                values[1, 2] = 1;
                 button6.Text = "X";
                 currentPlayer = 2;
             }
             else if (currentPlayer == 2)
             {
+                values[1, 2] = 2;
                 button6.Text = "O";
                 currentPlayer = 1;
             }
             DiagonalsCheck();
+            RowsCheck();
+            ColumnsCheck();
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -255,15 +377,19 @@ namespace TicTacToeDesktopForms
             button7.Enabled = false;
             if (currentPlayer == 1)
             {
+                values[2, 0] = 1;
                 button7.Text = "X";
                 currentPlayer = 2;
             }
             else if (currentPlayer == 2)
             {
+                values[2, 0] = 2;
                 button7.Text = "O";
                 currentPlayer = 1;
             }
             DiagonalsCheck();
+            RowsCheck();
+            ColumnsCheck();
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -271,15 +397,19 @@ namespace TicTacToeDesktopForms
             button8.Enabled = false;
             if (currentPlayer == 1)
             {
+                values[2, 1] = 1;
                 button8.Text = "X";
                 currentPlayer = 2;
             }
             else if (currentPlayer == 2)
             {
+                values[2, 1] = 2;
                 button8.Text = "O";
                 currentPlayer = 1;
             }
             DiagonalsCheck();
+            RowsCheck();
+            ColumnsCheck();
         }
 
         private void button9_Click(object sender, EventArgs e)
@@ -287,15 +417,44 @@ namespace TicTacToeDesktopForms
             button9.Enabled = false;
             if (currentPlayer == 1)
             {
+                values[2, 2] = 1;
                 button9.Text = "X";
                 currentPlayer = 2;
             }
             else if (currentPlayer == 2)
             {
+                values[2, 2] = 2;
                 button9.Text = "O";
                 currentPlayer = 1;
             }
             DiagonalsCheck();
+            RowsCheck();
+            ColumnsCheck();
+        }
+
+        internal class Prompt
+        {
+            public string ShowDialog(string title, string content)
+            {
+                Form prompt = new Form()
+                {
+                    Width = 350,
+                    Height = 150,
+                    FormBorderStyle = FormBorderStyle.FixedDialog,
+                    Text = title,
+                    StartPosition = FormStartPosition.CenterScreen
+                };
+                Label label = new Label() { Left = 50, Top = 20, Text = content };
+                TextBox textBox = new TextBox() { Left = 50, Top = 50, Width = 200 };
+                Button okButton = new Button() { Text = "OK", Left = 50, Width = 200, Top = 80, DialogResult = DialogResult.OK };
+                okButton.Click += (sender, e) => { prompt.Close(); };
+                prompt.Controls.Add(label);
+                prompt.Controls.Add(textBox);
+                prompt.Controls.Add(okButton);
+                prompt.AcceptButton = okButton;
+
+                return prompt.ShowDialog() == DialogResult.OK ? textBox.Text : "";
+            }
         }
     }
 }
