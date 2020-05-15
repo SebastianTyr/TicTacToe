@@ -62,7 +62,7 @@
             this.pomocToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(521, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(521, 30);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -72,7 +72,7 @@
             this.nowaGraToolStripMenuItem,
             this.WyjścieToolStripMenuItem});
             this.plikToolStripMenuItem.Name = "plikToolStripMenuItem";
-            this.plikToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
+            this.plikToolStripMenuItem.Size = new System.Drawing.Size(46, 26);
             this.plikToolStripMenuItem.Text = "Plik";
             // 
             // nowaGraToolStripMenuItem
@@ -95,7 +95,7 @@
             this.oGrzeToolStripMenuItem,
             this.jakGraćToolStripMenuItem});
             this.pomocToolStripMenuItem.Name = "pomocToolStripMenuItem";
-            this.pomocToolStripMenuItem.Size = new System.Drawing.Size(68, 24);
+            this.pomocToolStripMenuItem.Size = new System.Drawing.Size(68, 26);
             this.pomocToolStripMenuItem.Text = "Pomoc";
             // 
             // oGrzeToolStripMenuItem

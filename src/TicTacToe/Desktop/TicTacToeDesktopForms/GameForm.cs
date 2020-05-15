@@ -211,16 +211,28 @@ namespace TicTacToeDesktopForms
 
         private void DrawForm()
         {
-            DialogResult dialog = MessageBox.Show("Remis! Czy chcesz zagrać jeszcze raz?", "Koniec Gry", MessageBoxButtons.YesNo);
+            try
+            {
+                foreach (Control c in Controls)
+                {
+                    Button button = (Button)c;
 
-            if(dialog == DialogResult.Yes)
-            {
-                NewGame();
+                    if (button.Enabled == false)
+                    {
+                        DialogResult dialog = MessageBox.Show("Remis! Czy chcesz zagrać jeszcze raz?", "Koniec Gry", MessageBoxButtons.YesNo);
+
+                        if (dialog == DialogResult.Yes)
+                        {
+                            NewGame();
+                        }
+                        else if (dialog == DialogResult.No)
+                        {
+                            Dispose();
+                        }
+                    }
+                }
             }
-            else if(dialog == DialogResult.No)
-            {
-                Dispose();
-            }
+            catch { }
         }
 
         private void GameFormLoad(object sender, EventArgs e)
@@ -270,6 +282,7 @@ namespace TicTacToeDesktopForms
             DiagonalsCheck(); 
             RowsCheck(); 
             ColumnsCheck();
+            //DrawForm();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -290,6 +303,7 @@ namespace TicTacToeDesktopForms
             DiagonalsCheck();
             RowsCheck();
             ColumnsCheck();
+            //DrawForm();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -310,6 +324,7 @@ namespace TicTacToeDesktopForms
             DiagonalsCheck();
             RowsCheck();
             ColumnsCheck();
+            //DrawForm();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -330,6 +345,7 @@ namespace TicTacToeDesktopForms
             DiagonalsCheck();
             RowsCheck();
             ColumnsCheck();
+            //DrawForm();
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -350,6 +366,7 @@ namespace TicTacToeDesktopForms
             DiagonalsCheck();
             RowsCheck();
             ColumnsCheck();
+            //DrawForm();
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -370,6 +387,7 @@ namespace TicTacToeDesktopForms
             DiagonalsCheck();
             RowsCheck();
             ColumnsCheck();
+            //DrawForm();
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -390,6 +408,7 @@ namespace TicTacToeDesktopForms
             DiagonalsCheck();
             RowsCheck();
             ColumnsCheck();
+            //DrawForm();
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -410,6 +429,7 @@ namespace TicTacToeDesktopForms
             DiagonalsCheck();
             RowsCheck();
             ColumnsCheck();
+            //DrawForm();
         }
 
         private void button9_Click(object sender, EventArgs e)
@@ -430,6 +450,7 @@ namespace TicTacToeDesktopForms
             DiagonalsCheck();
             RowsCheck();
             ColumnsCheck();
+            //DrawForm();
         }
 
         internal class Prompt
